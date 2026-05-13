@@ -1,0 +1,56 @@
+{
+  "app_name": "SkillPulse",
+  "base_url": "http://localhost:8080",
+  "description": "A skill tracking application where users can add skills, log learning sessions and view dashboard stats",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/skills",
+      "description": "Get all skills",
+      "request_body": null,
+      "response": "List of skill objects"
+    },
+    {
+      "method": "POST",
+      "path": "/api/skills",
+      "description": "Create a new skill",
+      "request_body": {
+        "name": "string, required",
+        "category": "string, required",
+        "goal_hours": "number, required"
+      },
+      "response": "Created skill object"
+    },
+    {
+      "method": "GET",
+      "path": "/api/skills/:id",
+      "description": "Get a single skill by ID",
+      "request_body": null,
+      "response": "Single skill object"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/skills/:id",
+      "description": "Delete a skill by ID",
+      "request_body": null,
+      "response": "Success or error message"
+    },
+    {
+      "method": "POST",
+      "path": "/api/skills/:id/log",
+      "description": "Log a learning session for a skill",
+      "request_body": {
+        "hours": "number, required",
+        "notes": "string, optional"
+      },
+      "response": "Created log entry"
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard",
+      "description": "Get dashboard stats - total skills, hours logged, sessions, top skill",
+      "request_body": null,
+      "response": "Dashboard stats object"
+    }
+  ]
+}
