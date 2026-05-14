@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillPulse — Test Cases Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1117;
+            color: #e0e0e0;
+            padding: 30px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 12px;
+            border: 1px solid #2a2a4a;
+        }
+        .header h1 {
+            font-size: 2rem;
+            color: #7c83fd;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .summary {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        .summary-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 20px 40px;
+            text-align: center;
+        }
+        .summary-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #7c83fd;
+        }
+        .summary-card .label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 4px;
+        }
+        .route-card {
+            background: #1a1a2e;
+            border: 1px solid #2a2a4a;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .route-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .method-badge {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        .route-path {
+            font-size: 1.1rem;
+            font-family: monospace;
+            color: #e0e0e0;
+        }
+        .tc-count {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: #888;
+            background: #0f1117;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .route-desc {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        thead tr {
+            background: #0f1117;
+        }
+        th {
+            padding: 10px 12px;
+            text-align: left;
+            color: #7c83fd;
+            font-weight: 600;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #1e1e3a;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #16213e; }
+        .tc-id {
+            font-family: monospace;
+            color: #7c83fd;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .no-data {
+            text-align: center;
+            color: #555;
+            padding: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 SkillPulse — Test Cases Report</h1>
+        <p>Generated: 2026-05-14 14:22:23 | Model: qwen2.5:3b</p>
+    </div>
+
+    <div class="summary">
+        <div class="summary-card">
+            <div class="number">6</div>
+            <div class="label">API Routes</div>
+        </div>
+        <div class="summary-card">
+            <div class="number">36</div>
+            <div class="label">Test Cases</div>
+        </div>
+    </div>
+
+    
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#2ecc71">GET</span>
+                <span class="route-path">/api/skills</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Get all skills</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Get all skills</td>
+                <td>Valid input: No precondition needed</td>
+                <td>Call GET /api/skills with no query parameters</td>
+                <td>Returns a list of skill objects</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field or empty input</td>
+                <td>Valid input except for one field (e.g., name, level) set to null or empty string</td>
+                <td>Call GET /api/skills with only the valid fields and an invalid field set to null or empty string</td>
+                <td>Returns error indicating missing or invalid fields</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type</td>
+                <td>Use a non-string value for a field that expects a string (e.g., using 123 instead of "123" for name)</td>
+                <td>Call GET /api/skills with a field containing a non-string value</td>
+                <td>Returns error indicating an invalid format for the input</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource</td>
+                <td>Use an ID not present in the database</td>
+                <td>Call GET /api/skills with an invalid or non-existent ID</td>
+                <td>Returns 404 Not Found error</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value</td>
+                <td>Use a very large number (e.g., max integer +1) as an input parameter to simulate boundary condition testing</td>
+                <td>Call GET /api/skills with the large number as a valid query parameter</td>
+                <td>Returns list of skills up to the maximum possible based on the endpoint's logic</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario</td>
+                <td>Request more resources than available in the database or exceed rate limits</td>
+                <td>Simulate making multiple calls to the endpoint quickly (e.g., by adding 10 GET /api/skills requests consecutively)</td>
+                <td>Returns error indicating request limit exceeded or similar limitation errors</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#3498db">POST</span>
+                <span class="route-path">/api/skills</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Create a new skill</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Create a new skill</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills with valid fields, name="Learning Python", category="Programming", goal_hours=50</td>
+                <td>Created skill object with status 201</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field (name)</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills without the "name" field, category="Learning Python", goal_hours=10</td>
+                <td>Error response indicating missing mandatory field</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type for name</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills with a non-string value for the "name" field, category="Learning Python", goal_hours=10</td>
+                <td>Error response indicating invalid input format</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource (invalid ID)</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills with a non-existent ID in the headers, name="New Skill", category="Data Science", goal_hours=30</td>
+                <td>Error response indicating invalid resource</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value (goal_hours)</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills with goal_hours set to the upper boundary, name="Advanced Math", category="Academics", goal_hours=1000</td>
+                <td>Error response indicating invalid input</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario (duplicate skill)</td>
+                <td>API endpoint is up and running</td>
+                <td>Send POST request to /api/skills with valid data fields, name="Python Programming", category="Programming", goal_hours=20</td>
+                <td>Error response indicating a duplicate skill already exists</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#2ecc71">GET</span>
+                <span class="route-path">/api/skills/:id</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Get a single skill by ID</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Get a valid skill by ID</td>
+                <td>The endpoint exists and the SkillPulse application is running</td>
+                <td>Verify that fetching a skill with an existing ID returns the correct skill object</td>
+                <td>Single skill object returned</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field - Skill name</td>
+                <td>Valid API URL, missing required "name" parameter in request body</td>
+                <td>Attempt to fetch a skill without specifying the "name", expect error response indicating invalid or incomplete data</td>
+                <td>Error response indicating invalid or incomplete data</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type for skill name</td>
+                <td>Valid API URL, "name" field as an integer instead of string in request body</td>
+                <td>Attempt to fetch a skill with "name" parameter as integer, expect error response indicating incorrect data type for the "name" field</td>
+                <td>Error response indicating incorrect data type for the "name" field</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource - Invalid ID</td>
+                <td>Valid API URL, invalid ID (e.g., "-1") in request parameters</td>
+                <td>Attempt to fetch a skill with an invalid or non-existent ID, expect error response indicating invalid input</td>
+                <td>Error response indicating invalid input</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value for skill name</td>
+                <td>Valid API URL, "name" parameter set to the maximum length allowed by the application</td>
+                <td>Test fetching a skill where the "name" is at its maximum length, expect successful response with no issues</td>
+                <td>Successful response with no issues</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario - Empty input for all fields</td>
+                <td>Valid API URL, empty request body sent</td>
+                <td>Attempt to fetch a skill without specifying any fields, expect error response indicating missing required data or incomplete data</td>
+                <td>Error response indicating missing required data or incomplete data</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#e74c3c">DELETE</span>
+                <span class="route-path">/api/skills/:id</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Delete a skill by ID</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Delete a valid skill by ID</td>
+                <td>Skill exists, ID is provided and correct</td>
+                <td>Verify response indicates successful deletion</td>
+                <td>Success</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field - invalid input</td>
+                <td>ID missing or empty</td>
+                <td>Validate API returns error message for incorrect input format</td>
+                <td>Error: Required field ID is missing or not provided</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type - ID as string</td>
+                <td>Non-numeric value for ID</td>
+                <td>Validate API responds with an error indicating wrong data type for ID</td>
+                <td>Error: ID must be a valid numeric integer</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource - invalid ID</td>
+                <td>Nonexistent skill ID provided</td>
+                <td>Verify response indicates resource not found or deletion failed</td>
+                <td>Error: Resource not found, skill does not exist</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value - maximum ID range</td>
+                <td>Highest possible skill ID + 1</td>
+                <td>Validate API handles the edge case of out-of-range IDs and returns appropriate error</td>
+                <td>Error: Requested resource not found</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario - delete all skills (not implemented)</td>
+                <td>No preconditions as scenario is theoretical</td>
+                <td>Scenario description only, no steps or results</td>
+                <td>Not Implemented</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#3498db">POST</span>
+                <span class="route-path">/api/skills/:id/log</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Log a learning session for a skill</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Log a learning session successfully</td>
+                <td>Valid ID and fields are provided</td>
+                <td>POST /api/skills/123/log with hours=4.5 & notes="Overview of Python"</td>
+                <td>Created log entry for skill with id 123</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field - hours</td>
+                <td>Valid ID but missing or empty "hours" field</td>
+                <td>POST /api/skills/123/log with hours=""</td>
+                <td>HTTP status code: 400 Bad Request</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type - invalid hours input</td>
+                <td>Valid ID and non-numeric value for "hours" field</td>
+                <td>POST /api/skills/123/log with hours="abc"</td>
+                <td>HTTP status code: 400 Bad Request</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource (invalid ID)</td>
+                <td>Valid fields but non-existent ID</td>
+                <td>POST /api/skills/-999/log with hours=5.5 & notes="Introduction to Java"</td>
+                <td>HTTP status code: 404 Not Found</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value - minimum hour input</td>
+                <td>Valid field and at minimum boundary</td>
+                <td>POST /api/skills/123/log with hours=0 & notes=""</td>
+                <td>Created log entry for skill with id 123 with zero duration and no notes</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario - negative hour input</td>
+                <td>Valid ID but non-numeric value for "hours" field as negative number</td>
+                <td>POST /api/skills/123/log with hours="-5.5" & notes=""</td>
+                <td>HTTP status code: 400 Bad Request</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="route-card">
+            <div class="route-header">
+                <span class="method-badge" style="background:#2ecc71">GET</span>
+                <span class="route-path">/api/dashboard</span>
+                <span class="tc-count">6 test cases</span>
+            </div>
+            <p class="route-desc">Get dashboard stats - total skills, hours logged, sessions, top skill</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Precondition</th>
+                        <th>Steps</th>
+                        <th>Expected Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td class="tc-id">TC001</td>
+                <td>Get dashboard stats</td>
+                <td>User is logged in</td>
+                <td>Call /api/dashboard with valid JWT token and no input parameters</td>
+                <td>Dashboard stats object returned</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC002</td>
+                <td>Missing required field or empty input</td>
+                <td>User is logged in</td>
+                <td>Call /api/dashboard without providing any fields</td>
+                <td>Error response indicating missing required fields</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC003</td>
+                <td>Invalid data type</td>
+                <td>User is logged in</td>
+                <td>Attempt to call /api/dashboard with non-JSON formatted body or incorrect types for properties</td>
+                <td>Bad Request error indicating invalid content type or field types</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC004</td>
+                <td>Non-existent resource</td>
+                <td>User is logged in</td>
+                <td>Call /api/dashboard with a non-existent ID parameter</td>
+                <td>Error response indicating resource not found</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC005</td>
+                <td>Boundary value</td>
+                <td>User is logged in</td>
+                <td>Call /api/dashboard with extreme values for hours logged, session count</td>
+                <td>Dashboard stats object returned with boundary values as expected</td>
+            </tr>
+            <tr>
+                <td class="tc-id">TC006</td>
+                <td>Negative scenario</td>
+                <td>User is not logged in</td>
+                <td>Attempt to call /api/dashboard without providing any authentication</td>
+                <td>Unauthorized error</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+
+    <div class="footer">
+        <p>Generated by QA Test Generator Agent</p>
+    </div>
+</body>
+</html>

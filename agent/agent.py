@@ -4,6 +4,7 @@ import re
 from datetime import datetime
 import ollama
 from agent.prompt_builder import build_prompt
+from agent.reporter import generate_html_report
 
 
 def load_routes(input_file: str) -> dict:
@@ -130,4 +131,5 @@ def run_agent(input_file: str, model: str = "qwen2.5:3b"):
         })
 
     save_output(app_name, results)
+    generate_html_report(app_name,results)
     print("\n🎉 Agent completed successfully!")
